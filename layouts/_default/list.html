@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="h-feed">
+  {{ range where .Site.RegularPages "Type" "post" }}
+  <article class="h-entry post">
+    {{ if .Title }}
+    <h2 class="p-name post-title">
+      <a href="{{ .Permalink }}" class="u-url">{{ .Title }}</a>
+    </h2>
+    {{ end }}
+    <time class="dt-published post-meta" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+      {{ .Date.Format "2006年1月2日" }}
+    </time>
+    <div class="e-content post-content">
+      {{ if .Truncated }}
+        {{ .Summary }}
+        <p><a href="{{ .Permalink }}">続きを読む →</a></p>
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
+    </div>
+  </article>
+  {{ end }}
+
+  {{ partial "pagination.html" . }}
+</div>
+{{ end }}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+<article class="h-entry post">
+  {{ if .Title }}
+  <h1 class="p-name post-title">{{ .Title }}</h1>
+  {{ end }}
+
+  <time class="dt-published post-meta" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+    {{ .Date.Format "2006年1月2日" }}
+  </time>
+
+  <div class="e-content post-content">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.author }}
+  <div class="post-credits">
+    {{ if $.Params.photographer }}
+    <p>写真：{{ $.Params.photographer }}</p>
+    {{ end }}
+    <p>文：{{ . }}</p>
+  </div>
+  {{ end }}
+
+  <a href="{{ .Permalink }}" class="u-url" hidden></a>
+</article>
+
+{{ partial "webmention_extra.html" . }}
+{{ end }}

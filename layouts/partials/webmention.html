@@ -1,0 +1,7 @@
+{{/* Webmention support */}}
+{{ with .Site.Params.webmention }}
+<link rel="webmention" href="{{ . }}">
+{{ end }}
+{{ with .Site.Params.pingback }}
+<link rel="pingback" href="{{ . }}">
+{{ end }}

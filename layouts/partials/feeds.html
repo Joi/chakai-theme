@@ -1,0 +1,6 @@
+{{ with .OutputFormats.Get "RSS" }}
+<link rel="alternate" type="{{ .MediaType }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+{{ end }}
+{{ with .OutputFormats.Get "JSON" }}
+<link rel="alternate" type="{{ .MediaType }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+{{ end }}

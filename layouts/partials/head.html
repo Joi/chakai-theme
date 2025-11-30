@@ -1,0 +1,12 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+
+<!-- Chakai Theme CSS -->
+<link rel="stylesheet" href="/css/chakai.css">
+
+<!-- Micro.blog defaults -->
+{{ partial "feeds.html" . }}
+{{ partial "head_extra.html" . }}
+{{ partial "webmention.html" . }}

@@ -1,0 +1,367 @@
+/* Chakai Theme - Tea Ceremony Inspired
+ * Wabi-sabi aesthetics: simplicity, imperfection, transience
+ */
+
+:root {
+  /* Primary - Like handmade washi paper */
+  --bg-primary: #F8F6F1;
+  --bg-secondary: #EFECE4;
+
+  /* Text - Sumi ink inspired */
+  --text-primary: #2D2A26;
+  --text-secondary: #5C5852;
+  --text-muted: #8A867E;
+
+  /* Accents - Natural tea ceremony elements */
+  --accent-matcha: #6B8E5E;
+  --accent-rust: #8B7355;
+  --accent-indigo: #4A5568;
+
+  /* Borders - Subtle like tatami edges */
+  --border-light: #E2DFD7;
+  --border-medium: #C9C4B8;
+
+  /* Layout */
+  --max-width: 680px;
+  --max-width-wide: 900px;
+  --spacing-unit: 1.5rem;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont,
+               "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+               Meiryo, "Noto Sans JP", sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Links */
+a {
+  color: var(--accent-matcha);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-rust);
+}
+
+/* Header - Simple like a tokonoma alcove */
+.site-header {
+  padding: calc(var(--spacing-unit) * 2.5) var(--spacing-unit);
+  text-align: center;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-primary);
+}
+
+.site-title {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho",
+               "Noto Serif JP", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.site-title:hover {
+  color: var(--accent-matcha);
+}
+
+.site-nav {
+  margin-top: calc(var(--spacing-unit) * 0.75);
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.site-nav a:hover {
+  color: var(--accent-matcha);
+}
+
+/* Main Content - Ma (negative space) */
+.main, main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(var(--spacing-unit) * 2.5) var(--spacing-unit);
+}
+
+/* Posts List */
+.posts, .h-feed {
+  list-style: none;
+}
+
+.post, .h-entry {
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  padding-bottom: calc(var(--spacing-unit) * 2);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.post:last-child, .h-entry:last-child {
+  border-bottom: none;
+}
+
+/* Post Title */
+.post-title, h1.p-name, h2.p-name {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho",
+               "Noto Serif JP", Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1.45;
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  letter-spacing: 0.03em;
+}
+
+.post-title a, h1.p-name a, h2.p-name a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.post-title a:hover, h1.p-name a:hover, h2.p-name a:hover {
+  color: var(--accent-matcha);
+}
+
+/* Single Post Title */
+article h1.p-name {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-unit);
+  text-align: center;
+}
+
+/* Post Meta */
+.post-meta, .dt-published, time {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: var(--spacing-unit);
+  display: block;
+}
+
+/* Post Content */
+.post-content, .e-content {
+  color: var(--text-secondary);
+}
+
+.post-content p, .e-content p {
+  margin-bottom: 1.6em;
+}
+
+.post-content h2, .e-content h2 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho",
+               "Noto Serif JP", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin: calc(var(--spacing-unit) * 2) 0 var(--spacing-unit);
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+}
+
+.post-content h3, .e-content h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: calc(var(--spacing-unit) * 1.5) 0 calc(var(--spacing-unit) * 0.75);
+  color: var(--text-primary);
+}
+
+/* Images - Respectful treatment */
+.post-content img, .e-content img {
+  max-width: 100%;
+  height: auto;
+  margin: calc(var(--spacing-unit) * 1.5) 0;
+  border-radius: 2px;
+  display: block;
+}
+
+/* Image captions */
+.post-content img + em, .e-content img + em,
+.post-content p > em:only-child, .e-content p > em:only-child {
+  display: block;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: normal;
+  margin-top: calc(var(--spacing-unit) * -1);
+  margin-bottom: var(--spacing-unit);
+}
+
+/* Blockquotes - Like a scroll inscription */
+.post-content blockquote, .e-content blockquote {
+  border-left: 2px solid var(--accent-rust);
+  padding-left: var(--spacing-unit);
+  margin: var(--spacing-unit) 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Lists */
+.post-content ul, .post-content ol,
+.e-content ul, .e-content ol {
+  margin: var(--spacing-unit) 0;
+  padding-left: calc(var(--spacing-unit) * 1.5);
+}
+
+.post-content li, .e-content li {
+  margin-bottom: 0.5em;
+}
+
+/* Horizontal rule - Like a subtle divider */
+.post-content hr, .e-content hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: calc(var(--spacing-unit) * 2) 0;
+}
+
+/* Credits */
+.post-credits {
+  margin-top: calc(var(--spacing-unit) * 2);
+  padding-top: var(--spacing-unit);
+  border-top: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Series/Part Navigation */
+.series-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-unit);
+  margin-top: calc(var(--spacing-unit) * 2);
+  padding: var(--spacing-unit) 0;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.9rem;
+}
+
+.series-nav a {
+  color: var(--accent-matcha);
+}
+
+.series-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.site-footer, footer {
+  padding: calc(var(--spacing-unit) * 2) var(--spacing-unit);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+}
+
+.site-footer a, footer a {
+  color: var(--text-muted);
+}
+
+.site-footer a:hover, footer a:hover {
+  color: var(--accent-matcha);
+}
+
+/* Archive Page */
+.archive-year {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho",
+               "Noto Serif JP", Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin: calc(var(--spacing-unit) * 2) 0 var(--spacing-unit);
+  font-weight: 400;
+}
+
+.archive-list {
+  list-style: none;
+}
+
+.archive-list li {
+  padding: calc(var(--spacing-unit) * 0.5) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.archive-list li:last-child {
+  border-bottom: none;
+}
+
+.archive-date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  min-width: 5em;
+  display: inline-block;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 2);
+  padding-top: var(--spacing-unit);
+  border-top: 1px solid var(--border-light);
+}
+
+.pagination a {
+  color: var(--accent-matcha);
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  .site-header {
+    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
+  }
+
+  .site-title {
+    font-size: 1.4rem;
+  }
+
+  .post-title, h1.p-name, h2.p-name {
+    font-size: 1.4rem;
+  }
+
+  article h1.p-name {
+    font-size: 1.6rem;
+  }
+
+  .main, main {
+    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
+  }
+}
+
+/* Print styles */
+@media print {
+  .site-header, .site-footer, .site-nav, .pagination {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .post-content img, .e-content img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+}
