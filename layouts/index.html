@@ -1,36 +1,48 @@
 {{ define "main" }}
-<div class="h-feed">
+<div class="h-feed posts-grid">
   {{ $paginator := .Paginate (where .Site.RegularPages "Type" "post") }}
   {{ range $paginator.Pages }}
-  <article class="h-entry post">
-    {{ if .Title }}
-    <h2 class="p-name post-title">
-      <a href="{{ .Permalink }}" class="u-url">{{ .Title }}</a>
-    </h2>
-    {{ end }}
-    <time class="dt-published post-meta" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-      {{ .Date.Format "2006年1月2日" }}
-    </time>
-    <div class="e-content post-content">
-      {{ if .Truncated }}
-        {{ .Summary }}
-        <p><a href="{{ .Permalink }}">続きを読む →</a></p>
-      {{ else }}
-        {{ .Content }}
-      {{ end }}
-    </div>
-  </article>
+  {{/* Extract first image from content */}}
+  {{ $images := findRE `<img[^>]+src="([^"]+)"` .Content 1 }}
+  {{ $heroImage := "" }}
+  {{ if $images }}
+    {{ $heroImage = replaceRE `.*src="([^"]+)".*` "$1" (index $images 0) }}
   {{ end }}
 
-  {{ if gt $paginator.TotalPages 1 }}
-  <nav class="pagination">
-    {{ if $paginator.HasPrev }}
-    <a href="{{ $paginator.Prev.URL }}">← 前のページ</a>
-    {{ end }}
-    {{ if $paginator.HasNext }}
-    <a href="{{ $paginator.Next.URL }}">次のページ →</a>
-    {{ end }}
-  </nav>
+  <article class="h-entry post-card">
+    <a href="{{ .Permalink }}" class="post-card-link u-url">
+      {{ if $heroImage }}
+      <div class="post-hero">
+        <img src="{{ $heroImage }}" alt="{{ .Title }}" class="post-hero-image" loading="lazy">
+      </div>
+      {{ else }}
+      <div class="post-hero post-hero-placeholder">
+        <span class="placeholder-icon">茶</span>
+      </div>
+      {{ end }}
+      <div class="post-card-content">
+        {{ if .Title }}
+        <h2 class="p-name post-card-title">{{ .Title }}</h2>
+        {{ else }}
+        <h2 class="p-name post-card-title">{{ .Date.Format "2006年1月2日" }}</h2>
+        {{ end }}
+        <time class="dt-published post-card-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+          {{ .Date.Format "2006年1月2日" }}
+        </time>
+      </div>
+    </a>
+  </article>
   {{ end }}
 </div>
+
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="pagination">
+  {{ if $paginator.HasPrev }}
+  <a href="{{ $paginator.Prev.URL }}">← 前のページ</a>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+  <a href="{{ $paginator.Next.URL }}">次のページ →</a>
+  {{ end }}
+</nav>
+{{ end }}
 {{ end }}
