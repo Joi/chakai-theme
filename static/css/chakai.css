@@ -378,14 +378,14 @@ article h1.p-name {
   flex-direction: row;
   text-decoration: none;
   color: inherit;
-  height: 100px;
+  height: 120px;
 }
 
 .post-hero {
   position: relative;
-  width: 100px;
-  min-width: 100px;
-  height: 100px;
+  width: 120px;
+  min-width: 120px;
+  height: 120px;
   overflow: hidden;
   background: var(--border-light);
   flex-shrink: 0;
