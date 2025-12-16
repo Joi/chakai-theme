@@ -361,11 +361,12 @@ article h1.p-name {
 .post-card {
   background: var(--bg-secondary);
   border-radius: 4px;
-  overflow: visible;
+  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border: none;
   margin-bottom: 0;
   padding-bottom: 0;
+  height: 130px;
 }
 
 .post-card:hover {
@@ -378,14 +379,15 @@ article h1.p-name {
   flex-direction: row;
   text-decoration: none;
   color: inherit;
-  min-height: 130px;
+  height: 130px;
 }
 
 .post-hero {
   position: relative;
   width: 130px;
   min-width: 130px;
-  min-height: 130px;
+  height: 130px;
+  max-height: 130px;
   overflow: hidden;
   border-radius: 4px 0 0 4px;
   background: var(--border-light);
