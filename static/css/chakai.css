@@ -25,6 +25,26 @@
   --max-width: 680px;
   --max-width-wide: 900px;
   --spacing-unit: 1.5rem;
+
+  /* Motion - deliberate like tea ceremony movements */
+  --transition-gentle: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-settle: 0.5s cubic-bezier(0.0, 0, 0.2, 1);
+  --transition-quick: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode - Yobanashi (evening tea ceremony) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1a1916;
+    --bg-secondary: #242220;
+    --text-primary: #e8e4dc;
+    --text-secondary: #b8b4aa;
+    --text-muted: #7a766e;
+    --border-light: #3a3632;
+    --border-medium: #4a4640;
+    --accent-matcha: #8fb07e;
+    --accent-rust: #a89070;
+  }
 }
 
 /* Reset */
@@ -43,18 +63,50 @@ body {
   font-family: -apple-system, BlinkMacSystemFont,
                "Hiragino Kaku Gothic ProN", "Hiragino Sans",
                Meiryo, "Noto Sans JP", sans-serif;
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
+  /* Subtle washi paper texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   color: var(--text-primary);
   line-height: 1.8;
   letter-spacing: 0.02em;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-matcha);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  transition: top var(--transition-quick);
+}
+
+.skip-link:focus {
+  top: 0;
+  color: white;
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-matcha);
+  outline-offset: 2px;
+}
+
 /* Links */
 a {
   color: var(--accent-matcha);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-quick);
 }
 
 a:hover {
@@ -141,10 +193,10 @@ a:hover {
   color: var(--accent-matcha);
 }
 
-/* Single Post Title */
+/* Single Post Title - More breathing room */
 article h1.p-name {
   font-size: 2rem;
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
   text-align: center;
 }
 
@@ -154,6 +206,13 @@ article h1.p-name {
   font-size: 0.85rem;
   margin-bottom: var(--spacing-unit);
   display: block;
+}
+
+/* Centered meta on single posts */
+article > .post-meta,
+article > time.dt-published {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
 /* Post Content */
@@ -182,11 +241,14 @@ article h1.p-name {
   color: var(--text-primary);
 }
 
-/* Images - Respectful treatment */
+/* Images - Respectful treatment with wider display */
 .post-content img, .e-content img {
-  max-width: 100%;
+  max-width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
   height: auto;
-  margin: calc(var(--spacing-unit) * 1.5) 0;
+  margin-top: calc(var(--spacing-unit) * 1.5);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
   border-radius: 2px;
   display: block;
 }
@@ -228,6 +290,32 @@ article h1.p-name {
   border: none;
   border-top: 1px solid var(--border-light);
   margin: calc(var(--spacing-unit) * 2) 0;
+}
+
+/* Code - Inline and blocks */
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Noto Sans Mono", monospace;
+  font-size: 0.9em;
+  background: var(--bg-secondary);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  color: var(--text-primary);
+}
+
+pre {
+  background: var(--bg-secondary);
+  padding: var(--spacing-unit);
+  border-radius: 4px;
+  overflow-x: auto;
+  border-left: 3px solid var(--accent-rust);
+  margin: var(--spacing-unit) 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 /* Credits */
@@ -322,34 +410,7 @@ article h1.p-name {
   font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  html {
-    font-size: 16px;
-  }
-
-  .site-header {
-    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
-  }
-
-  .site-title {
-    font-size: 1.4rem;
-  }
-
-  .post-title, h1.p-name, h2.p-name {
-    font-size: 1.4rem;
-  }
-
-  article h1.p-name {
-    font-size: 1.6rem;
-  }
-
-  .main, main {
-    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
-  }
-}
-
-/* Posts List - Horizontal Card Layout */
+/* Posts Grid - Horizontal Card Layout */
 .posts-grid {
   display: flex;
   flex-direction: column;
@@ -358,20 +419,27 @@ article h1.p-name {
   margin: 0 auto;
 }
 
-.post-card {
+.posts-grid .post-card {
   background: var(--bg-secondary);
   border-radius: 4px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform var(--transition-gentle), 
+              box-shadow var(--transition-settle);
   border: none;
   margin-bottom: 0;
   padding-bottom: 0;
   height: 130px;
 }
 
-.post-card:hover {
+.posts-grid .post-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .posts-grid .post-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .post-card-link {
@@ -400,10 +468,10 @@ article h1.p-name {
   object-fit: cover;
   margin: 0;
   border-radius: 0;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-gentle);
 }
 
-.post-card:hover .post-hero-image {
+.posts-grid .post-card:hover .post-hero-image {
   transform: scale(1.03);
 }
 
@@ -430,10 +498,10 @@ article h1.p-name {
   overflow: visible;
 }
 
-.post-card-title {
+.posts-grid .post-card-title {
   font-family: "Hiragino Mincho ProN", "Yu Mincho",
                "Noto Serif JP", Georgia, serif;
-  font-size: 20px !important;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.3;
   margin: 0 0 0.25rem;
@@ -445,18 +513,54 @@ article h1.p-name {
   -webkit-box-orient: vertical;
 }
 
-.post-card:hover .post-card-title {
+.posts-grid .post-card:hover .post-card-title {
   color: var(--accent-matcha);
 }
 
-.post-card-date {
-  font-size: 13px !important;
+.posts-grid .post-card-date {
+  font-size: 0.8125rem;
   color: var(--text-muted);
   margin: 0;
 }
 
-/* Responsive adjustments for posts list */
+/* Responsive */
 @media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  .site-header {
+    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
+  }
+
+  .site-title {
+    font-size: 1.4rem;
+  }
+
+  .post-title, h1.p-name, h2.p-name {
+    font-size: 1.4rem;
+  }
+
+  article h1.p-name {
+    font-size: 1.6rem;
+  }
+
+  .main, main {
+    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
+  }
+
+  /* Reset wider images on mobile */
+  .post-content img, .e-content img {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Mobile card adjustments */
+  .posts-grid .post-card {
+    height: 80px;
+  }
+
   .post-card-link {
     height: 80px;
   }
@@ -465,10 +569,11 @@ article h1.p-name {
     width: 80px;
     min-width: 80px;
     height: 80px;
+    max-height: 80px;
   }
 
-  .post-card-title {
-    font-size: 15px !important;
+  .posts-grid .post-card-title {
+    font-size: 0.9375rem;
   }
 
   .post-card-content {
@@ -476,9 +581,21 @@ article h1.p-name {
   }
 }
 
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Print styles */
 @media print {
-  .site-header, .site-footer, .site-nav, .pagination {
+  .site-header, .site-footer, .site-nav, .pagination, .skip-link {
     display: none;
   }
 
