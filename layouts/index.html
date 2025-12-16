@@ -24,10 +24,10 @@
         {{ if .Title }}
         <h2 class="p-name post-card-title">{{ .Title }}</h2>
         {{ else }}
-        <h2 class="p-name post-card-title">{{ .Date.Format "2006年1月2日" }}</h2>
+        <h2 class="p-name post-card-title">{{ .Date.Format "2006-01-02" }}</h2>
         {{ end }}
         <time class="dt-published post-card-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-          {{ .Date.Format "2006年1月2日" }}
+          {{ .Date.Format "2006-01-02" }}
         </time>
       </div>
     </a>
