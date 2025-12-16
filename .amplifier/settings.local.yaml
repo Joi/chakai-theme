@@ -1,0 +1,12 @@
+config:
+  providers:
+  - module: provider-openai
+    config:
+      api_key: ${OPENAI_API_KEY}
+      base_url: ${OPENAI_BASE_URL}
+      default_model: gpt-5.1-codex
+      reasoning_effort: high
+      priority: 1
+    source: git+https://github.com/microsoft/amplifier-module-provider-openai@main
+profile:
+  active: design-intelligence:designer
