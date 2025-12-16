@@ -378,13 +378,13 @@ article h1.p-name {
   flex-direction: row;
   text-decoration: none;
   color: inherit;
+  align-items: stretch;
 }
 
 .post-hero {
   position: relative;
-  width: 120px;
-  min-width: 120px;
-  height: 80px;
+  width: 100px;
+  min-width: 100px;
   overflow: hidden;
   background: var(--border-light);
   flex-shrink: 0;
@@ -419,22 +419,21 @@ article h1.p-name {
 }
 
 .post-card-content {
-  padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 0.75);
+  padding: calc(var(--spacing-unit) * 0.4) calc(var(--spacing-unit) * 0.6);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80px;
 }
 
 .post-card-title {
   font-family: "Hiragino Mincho ProN", "Yu Mincho",
                "Noto Serif JP", Georgia, serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 400;
-  line-height: 1.4;
-  margin: 0 0 calc(var(--spacing-unit) * 0.2);
+  line-height: 1.35;
+  margin: 0 0 calc(var(--spacing-unit) * 0.15);
   color: var(--text-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .post-card:hover .post-card-title {
@@ -442,7 +441,7 @@ article h1.p-name {
 }
 
 .post-card-date {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: var(--text-muted);
   margin: 0;
 }
@@ -450,18 +449,16 @@ article h1.p-name {
 /* Responsive adjustments for posts list */
 @media (max-width: 600px) {
   .post-hero {
-    width: 90px;
-    min-width: 90px;
-    height: 65px;
+    width: 80px;
+    min-width: 80px;
   }
 
   .post-card-title {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .post-card-content {
-    padding: calc(var(--spacing-unit) * 0.4);
-    min-height: 65px;
+    padding: calc(var(--spacing-unit) * 0.35);
   }
 }
 
