@@ -1,12 +1,11 @@
 config:
   providers:
-  - module: provider-openai
+  - module: provider-anthropic
     config:
-      api_key: ${OPENAI_API_KEY}
-      base_url: ${OPENAI_BASE_URL}
-      default_model: gpt-5.1-codex
-      reasoning_effort: high
+      api_key: ${ANTHROPIC_API_KEY}
+      base_url: ${ANTHROPIC_BASE_URL}
+      default_model: claude-opus-4-5-20251101
       priority: 1
-    source: git+https://github.com/microsoft/amplifier-module-provider-openai@main
+    source: git+https://github.com/microsoft/amplifier-module-provider-anthropic@main
 profile:
   active: design-intelligence:designer
